@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import server.models.Course;
+import server.models.RegistrationForm;
 
 public class Server {
 
@@ -104,6 +105,7 @@ public class Server {
             }
             objectOutputStream.writeObject(courses);
         } catch (IOException e) {
+            //TODO
         }
     }
 
@@ -113,7 +115,27 @@ public class Server {
      @throws Exception si une erreur se produit lors de la lecture de l'objet, l'écriture dans un fichier ou dans le flux de sortie.
      */
     public void handleRegistration() {
-        // TODO: implémenter cette méthode
+        try{
+            RegistrationForm input = (RegistrationForm) objectInputStream.readObject();
+            String session = input.getCourse().getSession();
+            String code = input.getCourse().getCode();
+            String matricule = input.getMatricule();
+            String nom = input.getNom();
+            String prenom = input.getPrenom();
+            String email = input.getEmail();
+            FileWriter fw = new FileWriter("./data/inscription.txt");
+            BufferedWriter writer = new BufferedWriter(fw);
+            String newInscription = session + "\t" + code + "\t" + matricule + "\t" + nom + "\t" + prenom + "\t" + email;
+            writer.append(newInscription);
+            writer.close();
+            objectOutputStream.writeObject("Félicitations! Inscription réussie de " + nom + " au cours " + code +" .");
+
+        }
+        catch (IOException e) {
+            //TODO
+        } catch (ClassNotFoundException e) {
+            //TODO
+        }
     }
 }
 
