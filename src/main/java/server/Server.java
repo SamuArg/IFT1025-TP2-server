@@ -2,13 +2,14 @@ package server;
 
 import javafx.util.Pair;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
+
+import server.models.Course;
 
 public class Server {
 
@@ -91,7 +92,19 @@ public class Server {
      @throws Exception si une erreur se produit lors de la lecture du fichier ou de l'écriture de l'objet dans le flux
      */
     public void handleLoadCourses(String arg) {
-        // TODO: implémenter cette méthode
+        try{
+            Scanner scan = new Scanner(new FileInputStream("./data/cours.txt"));
+            String course;
+            ArrayList<Course> courses = new ArrayList<>();
+            while((course = scan.nextLine()) != null){
+                String[] arrayCourse = course.split("\t",3);
+                if(arrayCourse[3].equals(arg)){
+                    courses.add(new Course(arrayCourse[0],arrayCourse[1],arrayCourse[2]));
+                }
+            }
+            objectOutputStream.writeObject(courses);
+        } catch (IOException e) {
+        }
     }
 
     /**
