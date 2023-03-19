@@ -100,7 +100,7 @@ public class Server {
             while((course = scan.nextLine()) != null){
                 String[] arrayCourse = course.split("\t",3);
                 if(arrayCourse[3].equals(arg)){
-                    courses.add(new Course(arrayCourse[0],arrayCourse[1],arrayCourse[2]));
+                    courses.add(new Course(arrayCourse[1],arrayCourse[0],arrayCourse[2]));
                 }
             }
             objectOutputStream.writeObject(courses);
@@ -123,7 +123,7 @@ public class Server {
             String nom = input.getNom();
             String prenom = input.getPrenom();
             String email = input.getEmail();
-            FileWriter fw = new FileWriter("./data/inscription.txt");
+            FileWriter fw = new FileWriter("./data/inscription.txt", true);
             BufferedWriter writer = new BufferedWriter(fw);
             String newInscription = session + "\t" + code + "\t" + matricule + "\t" + nom + "\t" + prenom + "\t" + email;
             writer.append(newInscription);
