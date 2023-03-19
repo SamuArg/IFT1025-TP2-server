@@ -22,6 +22,11 @@ public class Server {
     private ObjectOutputStream objectOutputStream;
     private final ArrayList<EventHandler> handlers;
 
+    /**
+     * Création d'un objet server
+     * @param port Déclare quel port sera utilisé pour hébergé le server
+     * @throws IOException Erreur possible lié au socket du server
+     */
     public Server(int port) throws IOException {
         this.server = new ServerSocket(port, 1);
         this.handlers = new ArrayList<EventHandler>();
@@ -38,6 +43,9 @@ public class Server {
         }
     }
 
+    /**
+     * Permet de créer et de gérer la relation client-server
+     */
     public void run() {
         while (true) {
             try {
@@ -54,6 +62,11 @@ public class Server {
         }
     }
 
+    /**
+     * Permet d'attendre le prochain input d'un client et de gérer les commandes lancées
+     * @throws IOException Erreur possible lors de la récupération du objectInputStream
+     * @throws ClassNotFoundException Erreur possible lors de la lecture de l'objet récupéré
+     */
     public void listen() throws IOException, ClassNotFoundException {
         String line;
         if ((line = this.objectInputStream.readObject().toString()) != null) {
@@ -71,6 +84,10 @@ public class Server {
         return new Pair<>(cmd, args);
     }
 
+    /**
+     * Permet d'arrêter la relation client-server
+     * @throws IOException Erreur possible en lien avec le ObjectOnputStream et ObjectInputStream
+     */
     public void disconnect() throws IOException {
         objectOutputStream.close();
         objectInputStream.close();
