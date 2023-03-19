@@ -21,8 +21,8 @@ public class Client_simple {
 
     public void run(){
         try{
-            objectOutputStream = (ObjectOutputStream) clientSocket.getOutputStream();
-            objectInputStream = (ObjectInputStream) clientSocket.getInputStream();
+            objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
+            objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
 
             choice();
 
@@ -34,11 +34,11 @@ public class Client_simple {
     public void choice(){
         try{
             System.out.println("Veuillez choisir la session pour laquelle vous voulez consulter la liste de cours:");
-            Scanner scan = new Scanner(System.in);
-            int choice = scan.nextInt();
             System.out.println("1. Automne");
             System.out.println("2. Hiver");
             System.out.println("3. Ete");
+            Scanner scan = new Scanner(System.in);
+            int choice = scan.nextInt();
 
             if (choice == 1){
                 System.out.println("> Choix: 1");
