@@ -10,6 +10,7 @@ public class Client_simpleLauncher {
         Client_simple client;
         try{
             client = new Client_simple(IP, PORT);
+            System.out.println("*** Bienvenue au portail d'inscriptions de cours de l'UDEM ***");
             client.run();
         } catch (IOException e) {
         }
