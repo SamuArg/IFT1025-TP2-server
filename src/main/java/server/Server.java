@@ -132,9 +132,9 @@ public class Server {
 
         }
         catch (IOException e) {
-            //TODO
+            e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            //TODO
+            e.printStackTrace();
         }
     }
 }

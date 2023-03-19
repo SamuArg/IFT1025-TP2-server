@@ -80,10 +80,10 @@ public class Client_simple {
 
     public void nextChoice(){
         try{
-            Scanner scan = new Scanner(System.in);
-            int choice = scan.nextInt();
             System.out.println("1. Consulter les cours offerts pour une autre session");
             System.out.println("2. Inscription à un cours");
+            Scanner scan = new Scanner(System.in);
+            int choice = scan.nextInt();
             if(choice == 1){
                 choice();
             }
@@ -133,7 +133,7 @@ public class Client_simple {
             objectOutputStream.writeObject("INSCRIRE");
             objectOutputStream.writeObject(form);
         } catch (IOException e) {
-            //TODO
+            e.printStackTrace();
         }
     }
 
