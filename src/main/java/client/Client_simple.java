@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Client_simple {
-    private Socket clientSocket;
+    private final Socket clientSocket;
     private ObjectOutputStream objectOutputStream;
     private ObjectInputStream objectInputStream;
 
@@ -27,7 +27,7 @@ public class Client_simple {
             choice();
 
         } catch (IOException e) {
-
+            e.printStackTrace();
         }
     }
 
@@ -65,7 +65,7 @@ public class Client_simple {
     public void printCourses(String session){
         try{
             objectOutputStream.writeObject("CHARGER " + session);
-            courses = (ArrayList) objectInputStream.readObject();
+            courses = (ArrayList<Course>) objectInputStream.readObject();
             System.out.println("Les cours offerts pendant la session d'"+session+" sont:");
             for(int i=0;i<courses.size();i++){
                 System.out.println(i + ". "+courses.get(i).getCode()+"\t"+courses.get(i).getName());
@@ -115,17 +115,24 @@ public class Client_simple {
             System.out.println("Veuillez saisir le code du cours: ");
             datas[4] = scan.next();
 
-            for (int i=0; i<courses.size();i++){
-                if (courses.get(i).getCode().equals(datas[4])){
-                    inscription(datas, courses.get(i));
-                    String success = (String) objectInputStream.readObject();
-                    System.out.println(success);
-                    return;
-                }
+            if (datas[3].length()!=8){
+                throw new IllegalArgumentException();
             }
+            else if(!isNumber(datas[3])){
+                throw new IllegalArgumentException();
+            }
+
+                for (Course cours : courses) {
+                    if (cours.getCode().equals(datas[4])) {
+                        inscription(datas, cours);
+                        String success = (String) objectInputStream.readObject();
+                        System.out.println(success);
+                        return;
+                    }
+                }
             throw new IllegalArgumentException();
         } catch (IllegalArgumentException e) {
-            System.out.println("Veuillez rentrer un code de cours valide.");
+            System.out.println("Veuillez fournir des informations exactes.");
             nextChoice();
         } catch (IOException e) {
             e.printStackTrace();
@@ -144,4 +151,12 @@ public class Client_simple {
         }
     }
 
+    public boolean isNumber(String input){
+        for (int i=0; i<input.length();i++){
+            if (!Character.isDigit(input.charAt(i))){
+            return false;
+            }
+        }
+        return true;
+    }
 }

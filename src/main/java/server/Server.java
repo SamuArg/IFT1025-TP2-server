@@ -131,7 +131,7 @@ public class Server {
             String newInscription = session + "\t" + code + "\t" + matricule + "\t" + nom + "\t" + prenom + "\t" + email;
             writer.append(newInscription);
             writer.close();
-            objectOutputStream.writeObject("Félicitations! Inscription réussie de " + nom + " au cours " + code +".");
+            objectOutputStream.writeObject("Félicitations! Inscription réussie de " + prenom + " au cours " + code +".");
             listen();
 
         }
