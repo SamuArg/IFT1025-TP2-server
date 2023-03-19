@@ -65,16 +65,16 @@ public class Client_simple {
     public void printCourses(String session){
         try{
             objectOutputStream.writeObject("CHARGER " + session);
-            courses = (ArrayList<Course>) objectInputStream.readObject();
+            courses = (ArrayList) objectInputStream.readObject();
             System.out.println("Les cours offerts pendant la session d'"+session+" sont:");
             for(int i=0;i<courses.size();i++){
                 System.out.println(i + ". "+courses.get(i).getCode()+"\t"+courses.get(i).getName());
             }
             nextChoice();
         } catch (IOException e) {
-            //TODO
+            e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            //TODO
+            e.printStackTrace();
         }
     }
 

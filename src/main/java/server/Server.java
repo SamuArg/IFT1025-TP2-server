@@ -94,18 +94,18 @@ public class Server {
      */
     public void handleLoadCourses(String arg) {
         try{
-            Scanner scan = new Scanner(new FileInputStream("./data/cours.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("src/main/java/server/data/cours.txt"));
             String course;
             ArrayList<Course> courses = new ArrayList<>();
-            while((course = scan.nextLine()) != null){
-                String[] arrayCourse = course.split("\t",3);
-                if(arrayCourse[3].equals(arg)){
+            while((course = reader.readLine()) != null){
+                String[] arrayCourse = course.split("\t");
+                if(arrayCourse[2].equals(arg)){
                     courses.add(new Course(arrayCourse[1],arrayCourse[0],arrayCourse[2]));
                 }
             }
             objectOutputStream.writeObject(courses);
         } catch (IOException e) {
-            //TODO
+            e.printStackTrace();
         }
     }
 
