@@ -104,7 +104,10 @@ public class Server {
                 }
             }
             objectOutputStream.writeObject(courses);
+            listen();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
@@ -128,7 +131,8 @@ public class Server {
             String newInscription = session + "\t" + code + "\t" + matricule + "\t" + nom + "\t" + prenom + "\t" + email;
             writer.append(newInscription);
             writer.close();
-            System.out.println("Félicitations! Inscription réussie de " + nom + " au cours " + code +" .");
+            objectOutputStream.writeObject("Félicitations! Inscription réussie de " + nom + " au cours " + code +".");
+            listen();
 
         }
         catch (IOException e) {

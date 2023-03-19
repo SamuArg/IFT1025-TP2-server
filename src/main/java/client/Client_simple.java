@@ -89,6 +89,7 @@ public class Client_simple {
             }
             else if (choice == 2){
                 createForm();
+                nextChoice();
             }
             else {
                 throw new IllegalArgumentException();
@@ -117,6 +118,8 @@ public class Client_simple {
             for (int i=0; i<courses.size();i++){
                 if (courses.get(i).getCode().equals(datas[4])){
                     inscription(datas, courses.get(i));
+                    String success = (String) objectInputStream.readObject();
+                    System.out.println(success);
                     return;
                 }
             }
@@ -124,6 +127,10 @@ public class Client_simple {
         } catch (IllegalArgumentException e) {
             System.out.println("Veuillez rentrer un code de cours valide.");
             nextChoice();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
