@@ -123,7 +123,7 @@ public class Server {
             String nom = input.getNom();
             String prenom = input.getPrenom();
             String email = input.getEmail();
-            FileWriter fw = new FileWriter("./data/inscription.txt", true);
+            FileWriter fw = new FileWriter("src/main/java/server/data/inscription.txt", true);
             BufferedWriter writer = new BufferedWriter(fw);
             String newInscription = session + "\t" + code + "\t" + matricule + "\t" + nom + "\t" + prenom + "\t" + email;
             writer.append(newInscription);
