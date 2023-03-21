@@ -12,9 +12,18 @@ import java.util.Arrays;
 import server.models.Course;
 import server.models.RegistrationForm;
 
+/**
+ * Cette classe représente un serveur qui va traiter les requêtes des clients.
+ */
 public class Server {
 
+    /**
+     * La chaine de charactère qui correspond à la commande pour s'inscrire à un cours
+     */
     public final static String REGISTER_COMMAND = "INSCRIRE";
+    /**
+     * La chaine de charactère qui correspond à la commande pour charger la liste de cours
+     */
     public final static String LOAD_COMMAND = "CHARGER";
     private final ServerSocket server;
     private Socket client;
@@ -33,6 +42,10 @@ public class Server {
         this.addEventHandler(this::handleEvents);
     }
 
+    /**
+     * Permet d'ajouter les nouveaux événements à une liste qui seront à traiter par la suite.
+     * @param h L'événement à ajouté
+     */
     public void addEventHandler(EventHandler h) {
         this.handlers.add(h);
     }
@@ -77,6 +90,11 @@ public class Server {
         }
     }
 
+    /**
+     * Permet de créer des pairs de commandes et d'argument appelé par le client
+     * @param line Il s'agit du String de la commande entière envoyé par le client
+     * @return Retourne la pair créée
+     */
     public Pair<String, String> processCommandLine(String line) {
         String[] parts = line.split(" ");
         String cmd = parts[0];
@@ -94,6 +112,11 @@ public class Server {
         client.close();
     }
 
+    /**
+     * Permet de définir quelle commande a été appelé par le client
+     * @param cmd Définie la commande appelée par le client
+     * @param arg Définie l'argument appelé par le client
+     */
     public void handleEvents(String cmd, String arg) {
         if (cmd.equals(REGISTER_COMMAND)) {
             handleRegistration();
@@ -106,8 +129,8 @@ public class Server {
      Lire un fichier texte contenant des informations sur les cours et les transofmer en liste d'objets 'Course'.
      La méthode filtre les cours par la session spécifiée en argument.
      Ensuite, elle renvoie la liste des cours pour une session au client en utilisant l'objet 'objectOutputStream'.
+     La méthode gère les exceptions si une erreur se produit lors de la lecture du fichier ou de l'écriture de l'objet dans le flux.
      @param arg la session pour laquelle on veut récupérer la liste des cours
-     @throws Exception si une erreur se produit lors de la lecture du fichier ou de l'écriture de l'objet dans le flux
      */
     public void handleLoadCourses(String arg) {
         try{
@@ -128,8 +151,8 @@ public class Server {
 
     /**
      Récupérer l'objet 'RegistrationForm' envoyé par le client en utilisant 'objectInputStream', l'enregistrer dans un fichier texte
-     et renvoyer un message de confirmation au client.
-     @throws Exception si une erreur se produit lors de la lecture de l'objet, l'écriture dans un fichier ou dans le flux de sortie.
+     et renvoyer un message de confirmation au client. La méthode gére les exceptions si une erreur se produit lors de la lecture de l'objet,
+     l'écriture dans un fichier ou dans le flux de sortie.
      */
     public void handleRegistration() {
         try{
