@@ -1,18 +1,14 @@
 package client;
 
-import java.io.IOException;
 
 public class Client_simpleLauncher {
 
     private static final String IP = "127.0.0.1";
     private static final int PORT = 1337;
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
         Client_simple client;
-        try{
-            client = new Client_simple(IP, PORT);
-            System.out.println("*** Bienvenue au portail d'inscriptions de cours de l'UDEM ***");
-            client.run();
-        } catch (IOException e) {
-        }
+        System.out.println("*** Bienvenue au portail d'inscriptions de cours de l'UDEM ***");
+        client = new Client_simple();
+        client.choice();
     }
 }

@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
+
 
 import server.models.Course;
 import server.models.RegistrationForm;
@@ -121,10 +121,7 @@ public class Server {
                 }
             }
             objectOutputStream.writeObject(courses);
-            listen();
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
@@ -149,7 +146,6 @@ public class Server {
             writer.append(newInscription);
             writer.close();
             objectOutputStream.writeObject("Félicitations! Inscription réussie de " + prenom + " au cours " + code +".");
-            listen();
 
         }
         catch (IOException e) {

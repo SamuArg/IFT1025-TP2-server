@@ -9,22 +9,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Client_simple {
-    private final Socket clientSocket;
+    private Socket clientSocket;
     private ObjectOutputStream objectOutputStream;
     private ObjectInputStream objectInputStream;
 
     private ArrayList<Course> courses;
 
-    public Client_simple(String ip, int port) throws IOException {
-        clientSocket = new Socket(ip, port);
-    }
 
     public void run(){
         try{
             objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
             objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
 
-            choice();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -64,6 +60,8 @@ public class Client_simple {
 
     public void printCourses(String session){
         try{
+            connect();
+            run();
             objectOutputStream.writeObject("CHARGER " + session);
             courses = (ArrayList<Course>) objectInputStream.readObject();
             System.out.println("Les cours offerts pendant la session d'"+session+" sont:");
@@ -144,6 +142,8 @@ public class Client_simple {
     public void inscription(String[] datas, Course course){
         try{
             RegistrationForm form = new RegistrationForm(datas[0],datas[1],datas[2],datas[3],course);
+            connect();
+            run();
             objectOutputStream.writeObject("INSCRIRE");
             objectOutputStream.writeObject(form);
         } catch (IOException e) {
@@ -158,5 +158,9 @@ public class Client_simple {
             }
         }
         return true;
+    }
+
+    public void connect() throws IOException {
+        clientSocket = new Socket("127.0.0.1", 1337);
     }
 }
