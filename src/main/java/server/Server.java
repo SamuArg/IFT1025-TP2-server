@@ -165,7 +165,7 @@ public class Server {
             String email = input.getEmail();
             FileWriter fw = new FileWriter("src/main/java/server/data/inscription.txt", true);
             BufferedWriter writer = new BufferedWriter(fw);
-            String newInscription = session + "\t" + code + "\t" + matricule + "\t" + nom + "\t" + prenom + "\t" + email;
+            String newInscription = session + "\t" + code + "\t" + matricule + "\t" + nom + "\t" + prenom + "\t" + email + "\n";
             writer.append(newInscription);
             writer.close();
             objectOutputStream.writeObject("Félicitations! Inscription réussie de " + prenom + " au cours " + code +".");
