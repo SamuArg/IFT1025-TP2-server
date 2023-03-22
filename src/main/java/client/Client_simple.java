@@ -83,9 +83,11 @@ public class Client_simple {
             Scanner scan = new Scanner(System.in);
             int choice = scan.nextInt();
             if(choice == 1){
+                System.out.println("> Choix: 1");
                 choice();
             }
             else if (choice == 2){
+                System.out.println("> Choix: 2");
                 createForm();
                 nextChoice();
             }
