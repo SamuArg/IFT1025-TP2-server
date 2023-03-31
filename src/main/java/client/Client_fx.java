@@ -28,8 +28,8 @@ public class Client_fx extends Application {
         leftBox.setPrefSize(425,700);
         VBox rightBox = new VBox();
         rightBox.setPrefSize(425,700);
-        Scene scene = new Scene(root,900,700);
-        root.setPadding(new Insets(15,15,15,15));
+        Scene scene = new Scene(root,900,550);
+        root.setPadding(new Insets(20,20,20,20));
 
         Text leftTitle = new Text("Liste de cours");
         leftTitle.setFont(new Font(20));
@@ -64,9 +64,12 @@ public class Client_fx extends Application {
         leftBox.getChildren().add(tableau);
 
         HBox chargerSession = new HBox();
+        chargerSession.setAlignment(Pos.CENTER);
+        chargerSession.setSpacing(100);
         leftBox.getChildren().add(chargerSession);
 
         ComboBox<Object> sessionChoice = new ComboBox<>();
+        sessionChoice.setMinWidth(120);
         sessionChoice.getItems().addAll("Automne","Hiver","Été");
 
         chargerSession.getChildren().add(sessionChoice);
