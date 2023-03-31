@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -67,8 +68,12 @@ public class Client_fx extends Application {
 
         ComboBox<Object> sessionChoice = new ComboBox<>();
         sessionChoice.getItems().addAll("Automne","Hiver","Été");
+
         chargerSession.getChildren().add(sessionChoice);
 
+        Button charger = new Button("Charger");
+
+        chargerSession.getChildren().add(charger);
 
 
 
