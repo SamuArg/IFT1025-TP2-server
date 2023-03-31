@@ -4,7 +4,7 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Separator;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -14,7 +14,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import server.models.Course;
 
 public class Client_fx extends Application {
     public static void main(String[] args){
@@ -52,16 +51,25 @@ public class Client_fx extends Application {
         rightBox.getChildren().add(rightTitle);
         rightBox.setAlignment(Pos.TOP_RIGHT);
 
-        TableView tableau = new TableView();
-        TableColumn<Course, String> column1 = new TableColumn<>("Code");
+        TableView<Object> tableau = new TableView<>();
+        TableColumn<Object, Object> column1 = new TableColumn<>("Code");
         column1.setCellValueFactory(new PropertyValueFactory<>("code"));
-        TableColumn<Course, String> column2 = new TableColumn<>("Cours");
+        TableColumn<Object, Object> column2 = new TableColumn<>("Cours");
         column2.setCellValueFactory(new PropertyValueFactory<>("name"));
         tableau.getColumns().add(column1);
         tableau.getColumns().add(column2);
         tableau.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         leftBox.getChildren().add(tableau);
+
+        HBox chargerSession = new HBox();
+        leftBox.getChildren().add(chargerSession);
+
+        ComboBox<Object> sessionChoice = new ComboBox<>();
+        sessionChoice.getItems().addAll("Automne","Hiver","Été");
+        chargerSession.getChildren().add(sessionChoice);
+
+
 
 
 
