@@ -8,6 +8,9 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Représente un client simple qui fonctionne dans le terminal
+ */
 public class Client_simple {
     private Socket clientSocket;
     private ObjectOutputStream objectOutputStream;
@@ -15,7 +18,9 @@ public class Client_simple {
 
     private ArrayList<Course> courses;
 
-
+    /**
+     * Cette méthode permet de récupérer le stream d'input et d'output du clientSocket
+     */
     public void run(){
         try{
             objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
@@ -27,6 +32,9 @@ public class Client_simple {
         }
     }
 
+    /**
+     * Cette méthode demande à l'utilisateur de choisir quelle session veut-il voir la liste de cours
+     */
     public void choice(){
         try{
             System.out.println("Veuillez choisir la session pour laquelle vous voulez consulter la liste de cours:");
@@ -58,6 +66,10 @@ public class Client_simple {
         }
     }
 
+    /**
+     * Cette méthode permet de recevoir les cours d'une session depuis le serveur et d'imprimer les cours à l'utilisateur
+     * @param session Définie quelle est la session que l'utiliseur veut se renseigner
+     */
     public void printCourses(String session){
         try{
             connect();
@@ -76,6 +88,9 @@ public class Client_simple {
         }
     }
 
+    /**
+     * Cette méthode permet de demander à l'utilisateur la prochaine chose qu'il veut faire
+     */
     public void nextChoice(){
         try{
             System.out.println("1. Consulter les cours offerts pour une autre session");
@@ -100,6 +115,9 @@ public class Client_simple {
         }
     }
 
+    /**
+     * Cette méthode permet de créer le RegistrationForm pour que l'utilisateur s'inscrive à un cours et l'envoie au server
+     */
     public void createForm(){
         Scanner scan = new Scanner(System.in);
         String[] datas = new String[5];
@@ -141,6 +159,11 @@ public class Client_simple {
         }
     }
 
+    /**
+     * Cette méthode permet à l'utilisateur de s'inscrire à un cours
+     * @param datas Array d'informations sur l'utilisateur qui veut s'inscrire à un cours
+     * @param course Cours pour lequel l'utilisateur veut s'inscrire
+     */
     public void inscription(String[] datas, Course course){
         try{
             RegistrationForm form = new RegistrationForm(datas[0],datas[1],datas[2],datas[3],course);
@@ -153,6 +176,11 @@ public class Client_simple {
         }
     }
 
+    /**
+     * Cette méthode permet de vérifier si un input contient seulement des chiffres ou non
+     * @param input input en String à vérifier
+     * @return true si l'input contient que des chiffres, false sinon
+     */
     public boolean isNumber(String input){
         for (int i=0; i<input.length();i++){
             if (!Character.isDigit(input.charAt(i))){
@@ -162,6 +190,10 @@ public class Client_simple {
         return true;
     }
 
+    /**
+     * Cette méthode permet à un client de se connecter au server pour faire une requête
+     * @throws IOException Si il se passe une erreur lors de la connection entre le client et le server
+     */
     public void connect() throws IOException {
         clientSocket = new Socket("127.0.0.1", 1337);
     }
