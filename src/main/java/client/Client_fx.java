@@ -4,11 +4,9 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -77,6 +75,31 @@ public class Client_fx extends Application {
         Button charger = new Button("Charger");
 
         chargerSession.getChildren().add(charger);
+
+        GridPane pane = new GridPane();
+        pane.setAlignment(Pos.CENTER);
+        pane.setHgap(10);
+        pane.setVgap(10);
+        Label prenom = new Label("Prénom");
+        pane.add(prenom,0,1);
+        TextField prenomField = new TextField();
+        pane.add(prenomField,1,1);
+        Label nom = new Label("Nom");
+        pane.add(nom,0,2);
+        TextField nomField = new TextField();
+        pane.add(nomField,1,2);
+        Label email = new Label("Email");
+        pane.add(email,0,3);
+        TextField emailField = new TextField();
+        pane.add(emailField,1,3);
+        Label matricule = new Label("Matricule");
+        pane.add(matricule,0,4);
+        TextField matriculeField = new TextField();
+        pane.add(matriculeField,1,4);
+        Button envoyer = new Button("Envoyer");
+        pane.add(envoyer,1,5);
+        rightBox.getChildren().add(pane);
+
 
 
 
