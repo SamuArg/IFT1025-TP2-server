@@ -10,7 +10,7 @@ public class ServerLauncher {
     public final static int PORT = 1337;
 
     /**
-     * Méthode qui est lancé pour démarrer le server
+     * Méthode qui est lancée pour démarrer le server
      * @param args
      */
     public static void main(String[] args) {

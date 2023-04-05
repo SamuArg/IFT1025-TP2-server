@@ -102,7 +102,7 @@ public class RegistrationForm implements Serializable {
 
     /**
      * Permet de changer l'attribut course
-     * @param course course par lequel on va changer l'attribut course
+     * @param course cours par lequel on va changer l'attribut course
      */
     public void setCourse(Course course) {
         this.course = course;

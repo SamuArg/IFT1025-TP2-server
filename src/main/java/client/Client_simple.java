@@ -192,7 +192,7 @@ public class Client_simple {
 
     /**
      * Cette méthode permet à un client de se connecter au server pour faire une requête
-     * @throws IOException Si il se passe une erreur lors de la connection entre le client et le server
+     * @throws IOException S'il se passe une erreur lors de la connection entre le client et le server
      */
     public void connect() throws IOException {
         clientSocket = new Socket("127.0.0.1", 1337);

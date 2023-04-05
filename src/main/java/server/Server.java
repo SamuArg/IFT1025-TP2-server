@@ -33,7 +33,7 @@ public class Server {
 
     /**
      * Création d'un objet server
-     * @param port Déclare quel port sera utilisé pour hébergé le server
+     * @param port Déclare quel port sera utilisé pour héberger le server
      * @throws IOException Erreur possible lié au socket du server
      */
     public Server(int port) throws IOException {
@@ -43,8 +43,8 @@ public class Server {
     }
 
     /**
-     * Permet d'ajouter les nouveaux événements à une liste qui seront à traiter par la suite.
-     * @param h L'événement à ajouté
+     * Permet d'ajouter les nouveaux événements à une liste qui sera traité par la suite.
+     * @param h L'événement à ajouter
      */
     public void addEventHandler(EventHandler h) {
         this.handlers.add(h);
@@ -57,7 +57,7 @@ public class Server {
     }
 
     /**
-     * Permet de créer et de gérer la relation client-server
+     * Permet de créer et de gérer la relation client server
      */
     public void run() {
         while (true) {
@@ -77,7 +77,7 @@ public class Server {
 
     /**
      * Permet d'attendre le prochain input d'un client et de gérer les commandes lancées
-     * @throws IOException Erreur possible lors de la récupération du objectInputStream
+     * @throws IOException Erreur possible lors de la récupération d'objectInputStream
      * @throws ClassNotFoundException Erreur possible lors de la lecture de l'objet récupéré
      */
     public void listen() throws IOException, ClassNotFoundException {
@@ -93,7 +93,7 @@ public class Server {
     /**
      * Permet de créer des pairs de commandes et d'argument appelé par le client
      * @param line Il s'agit du String de la commande entière envoyé par le client
-     * @return Retourne la pair créée
+     * @return Retourne la paire créée
      */
     public Pair<String, String> processCommandLine(String line) {
         String[] parts = line.split(" ");
@@ -103,8 +103,8 @@ public class Server {
     }
 
     /**
-     * Permet d'arrêter la relation client-server
-     * @throws IOException Erreur possible en lien avec le ObjectOnputStream et ObjectInputStream
+     * Permet d'arrêter la relation client server
+     * @throws IOException Erreur possible en lien avec le ObjectOutputStream et ObjectInputStream
      */
     public void disconnect() throws IOException {
         objectOutputStream.close();
@@ -113,7 +113,7 @@ public class Server {
     }
 
     /**
-     * Permet de définir quelle commande a été appelé par le client
+     * Permet de définir quelle commande a été appelée par le client
      * @param cmd Définie la commande appelée par le client
      * @param arg Définie l'argument appelé par le client
      */
@@ -126,7 +126,7 @@ public class Server {
     }
 
     /**
-     Lire un fichier texte contenant des informations sur les cours et les transofmer en liste d'objets 'Course'.
+     Lire un fichier texte contenant des informations sur les cours et les transformer en liste d'objets 'Course'.
      La méthode filtre les cours par la session spécifiée en argument.
      Ensuite, elle renvoie la liste des cours pour une session au client en utilisant l'objet 'objectOutputStream'.
      La méthode gère les exceptions si une erreur se produit lors de la lecture du fichier ou de l'écriture de l'objet dans le flux.
@@ -151,7 +151,7 @@ public class Server {
 
     /**
      Récupérer l'objet 'RegistrationForm' envoyé par le client en utilisant 'objectInputStream', l'enregistrer dans un fichier texte
-     et renvoyer un message de confirmation au client. La méthode gére les exceptions si une erreur se produit lors de la lecture de l'objet,
+     et renvoyer un message de confirmation au client. La méthode gère les exceptions si une erreur se produit lors de la lecture de l'objet,
      l'écriture dans un fichier ou dans le flux de sortie.
      */
     public void handleRegistration() {

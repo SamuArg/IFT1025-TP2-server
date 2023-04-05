@@ -1,7 +1,7 @@
 package server;
 
 /**
- * Définie l'interface fonctionnelle EventHandler qui sert a gérer les différents événements dans le server
+ * Définie l'interface fonctionnelle EventHandler qui sert à gérer les différents événements dans le server
  */
 @FunctionalInterface
 public interface EventHandler {

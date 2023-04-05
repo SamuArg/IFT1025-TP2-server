@@ -3,7 +3,7 @@ package server.models;
 import java.io.Serializable;
 
 /**
- * Symbolise un course à laquel un étudiant peut s'inscrire ou s'informer dessus
+ * Symbolise un cours à lequel un étudiant peut s'inscrire ou s'informer dessus
  */
 public class Course implements Serializable {
 
@@ -65,7 +65,7 @@ public class Course implements Serializable {
 
     /**
      * Permet de changer l'attribut session
-     * @param session session par lequel on va changer l'attribut session
+     * @param session session par laquelle on va changer l'attribut session
      */
     public void setSession(String session) {
         this.session = session;
