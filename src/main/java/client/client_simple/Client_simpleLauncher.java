@@ -1,4 +1,6 @@
-package client;
+package client.client_simple;
+
+import client.client_simple.Client_simple;
 
 /**
  * Cette classe permet de démarrer un nouveau client

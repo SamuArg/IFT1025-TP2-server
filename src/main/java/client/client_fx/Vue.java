@@ -1,4 +1,4 @@
-package client;
+package client.client_fx;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -14,20 +14,13 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
-public class Client_fx extends Application {
-    public static void main(String[] args){
-        Client_fx.launch(args);
-    }
-
-    @Override
-    public void start(Stage primaryStage){
-        HBox root = new HBox();
+public class Vue extends HBox {
+    public Vue(){
         VBox leftBox = new VBox();
         leftBox.setPrefSize(425,700);
         VBox rightBox = new VBox();
         rightBox.setPrefSize(425,700);
-        Scene scene = new Scene(root,900,550);
-        root.setPadding(new Insets(20,20,20,20));
+        this.setPadding(new Insets(20,20,20,20));
 
         Text leftTitle = new Text("Liste de cours");
         leftTitle.setFont(new Font(20));
@@ -39,11 +32,11 @@ public class Client_fx extends Application {
         rightTitle.setTextAlignment(TextAlignment.CENTER);
         rightTitle.setWrappingWidth(425);
 
-        root.getChildren().add(leftBox);
-        root.setSpacing(20);
+        this.getChildren().add(leftBox);
+        this.setSpacing(20);
         leftBox.setSpacing(20);
         rightBox.setSpacing(20);
-        root.getChildren().add(rightBox);
+        this.getChildren().add(rightBox);
 
         leftBox.getChildren().add(leftTitle);
         leftBox.setAlignment(Pos.TOP_LEFT);
@@ -99,11 +92,6 @@ public class Client_fx extends Application {
         Button envoyer = new Button("Envoyer");
         pane.add(envoyer,1,5);
         rightBox.getChildren().add(pane);
-
-
-        primaryStage.setTitle("Inscription UdeM");
-        primaryStage.setScene(scene);
-        primaryStage.show();
     }
 }
 
