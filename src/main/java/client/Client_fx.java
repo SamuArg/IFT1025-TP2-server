@@ -101,10 +101,6 @@ public class Client_fx extends Application {
         rightBox.getChildren().add(pane);
 
 
-
-
-
-
         primaryStage.setTitle("Inscription UdeM");
         primaryStage.setScene(scene);
         primaryStage.show();
