@@ -7,6 +7,8 @@ import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Représente un client simple qui fonctionne dans le terminal
@@ -140,6 +142,10 @@ public class Client_simple {
                 throw new IllegalArgumentException();
             }
 
+            else if(!isEmail(datas[2])){
+                throw new IllegalArgumentException();
+            }
+
                 for (Course cours : courses) {
                     if (cours.getCode().equals(datas[4])) {
                         inscription(datas, cours);
@@ -188,6 +194,12 @@ public class Client_simple {
             }
         }
         return true;
+    }
+
+    Pattern emailRegex = Pattern.compile("\\S+@\\S+\\.\\S+");
+    public boolean isEmail(String input){
+        Matcher matcher = emailRegex.matcher(input);
+        return matcher.find();
     }
 
     /**
