@@ -15,6 +15,11 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class Vue extends HBox {
+
+    private TableView<Object> tableau;
+    private ComboBox<Object> sessionChoice;
+    private Button charger;
+    private Button envoyer;
     public Vue(){
         VBox leftBox = new VBox();
         leftBox.setPrefSize(425,700);
@@ -43,7 +48,7 @@ public class Vue extends HBox {
         rightBox.getChildren().add(rightTitle);
         rightBox.setAlignment(Pos.TOP_RIGHT);
 
-        TableView<Object> tableau = new TableView<>();
+        tableau = new TableView<>();
         TableColumn<Object, Object> column1 = new TableColumn<>("Code");
         column1.setCellValueFactory(new PropertyValueFactory<>("code"));
         TableColumn<Object, Object> column2 = new TableColumn<>("Cours");
@@ -59,13 +64,13 @@ public class Vue extends HBox {
         chargerSession.setSpacing(100);
         leftBox.getChildren().add(chargerSession);
 
-        ComboBox<Object> sessionChoice = new ComboBox<>();
+        sessionChoice = new ComboBox<>();
         sessionChoice.setMinWidth(120);
         sessionChoice.getItems().addAll("Automne","Hiver","Été");
 
         chargerSession.getChildren().add(sessionChoice);
 
-        Button charger = new Button("Charger");
+        charger = new Button("Charger");
 
         chargerSession.getChildren().add(charger);
 
@@ -89,9 +94,25 @@ public class Vue extends HBox {
         pane.add(matricule,0,4);
         TextField matriculeField = new TextField();
         pane.add(matriculeField,1,4);
-        Button envoyer = new Button("Envoyer");
+        envoyer = new Button("Envoyer");
         pane.add(envoyer,1,5);
         rightBox.getChildren().add(pane);
+    }
+
+    public TableView<Object> getTableau(){
+        return this.tableau;
+    }
+
+    public ComboBox<Object> getSessionChoice(){
+        return this.sessionChoice;
+    }
+
+    public Button getCharger(){
+        return this.charger;
+    }
+
+    public Button getEnvoyer() {
+        return this.envoyer;
     }
 }
 
