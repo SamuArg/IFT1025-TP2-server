@@ -7,9 +7,6 @@ import client.client_simple.Client_simple;
  */
 public class Client_simpleLauncher {
 
-    private static final String IP = "127.0.0.1";
-    private static final int PORT = 1337;
-
     /**
      * Cette méthode permet de démarrer un nouveau Client_simple
      * @param args
