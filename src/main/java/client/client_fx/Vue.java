@@ -13,6 +13,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import server.models.Course;
+
+import java.util.ArrayList;
 
 public class Vue extends HBox {
 
@@ -66,7 +69,7 @@ public class Vue extends HBox {
 
         sessionChoice = new ComboBox<>();
         sessionChoice.setMinWidth(120);
-        sessionChoice.getItems().addAll("Automne","Hiver","Été");
+        sessionChoice.getItems().addAll("Automne","Hiver","Ete");
 
         chargerSession.getChildren().add(sessionChoice);
 
@@ -103,8 +106,8 @@ public class Vue extends HBox {
         return this.tableau;
     }
 
-    public ComboBox<Object> getSessionChoice(){
-        return this.sessionChoice;
+    public String getSessionChoice(){
+        return (String) this.sessionChoice.getValue();
     }
 
     public Button getCharger(){
@@ -113,6 +116,12 @@ public class Vue extends HBox {
 
     public Button getEnvoyer() {
         return this.envoyer;
+    }
+
+    public void setCourses(ArrayList<Course> courses){
+        for (int i = 0; i < courses.size(); i++){
+            this.tableau.getItems().add(courses.get(i));
+        }
     }
 }
 
