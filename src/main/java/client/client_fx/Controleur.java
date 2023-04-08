@@ -31,7 +31,7 @@ public class Controleur {
 
     public void charger() {
         String session = this.vue.getSessionChoice();
-        if (!session.equals("")) {
+        if (session != null) {
             ArrayList<Course> courses;
             try {
                 courses = this.modele.loadCourse(session);
