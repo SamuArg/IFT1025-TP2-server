@@ -9,11 +9,19 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 
+/**
+ * Cette classe permet de faire le lien entre la classe Vue et la classe Modele
+ */
 public class Controleur {
     private Modele modele;
     private Vue vue;
     private String currentSession;
 
+    /**
+     * Ce constructeur permet de lié les différentes classes ensemble et de définir l'action des boutons de l'interface graphique
+     * @param modele L'objet modele qui est utilisé pour faire le lien
+     * @param vue L'objet vue qui est utilisé pour faire le lien
+     */
     public Controleur(Modele modele, Vue vue) {
         this.modele = modele;
         this.vue = vue;
@@ -27,9 +35,13 @@ public class Controleur {
         });
     }
 
+    /**
+     * Cette méthode définie les actions que le bouton envoyer fait lorsqu'on clique dessus.
+     * Elle envoie les informations du formulaire vers le server pour s'inscrire à un cours
+     */
     public void envoyer() {
         ArrayList<String> errors = new ArrayList<>();
-        Course course = getSelectedCourse();
+        Course course = this.vue.getSelectedCourse();
         String prenom = this.vue.getPrenomField().getText();
         String nom = this.vue.getNomField().getText();
         String email = this.vue.getEmailField().getText();
@@ -70,6 +82,10 @@ public class Controleur {
         }
     }
 
+    /**
+     * Cette méthode définie les actions qui se passent lorsqu'on clique sur le bouton charger
+     * Elle charge les cours de la session choisie dans le tableau
+     */
     public void charger() {
         String session = this.vue.getSessionChoice();
         if (session != null) {
@@ -88,9 +104,5 @@ public class Controleur {
                 e.printStackTrace();
             }
         }
-    }
-
-    public Course getSelectedCourse(){
-        return (Course) this.vue.getTableau().getSelectionModel().getSelectedItem();
     }
 }
