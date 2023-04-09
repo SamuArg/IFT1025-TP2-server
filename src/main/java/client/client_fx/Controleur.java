@@ -90,6 +90,11 @@ public class Controleur {
             currentSession = session;
             try {
                 courses = this.modele.loadCourse(session);
+                if (courses == null){
+                    this.vue.getErrors().setContentText("Erreur serveur, veuillez réessayer plus tard");
+                    this.vue.getErrors().show();
+                    throw new IOException();
+                }
                 this.vue.setCourses(courses);
                 this.vue.getTableau().getItems().clear();
                 for (Course cours : courses) {
