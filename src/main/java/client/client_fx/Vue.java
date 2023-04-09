@@ -201,5 +201,14 @@ public class Vue extends HBox {
     public Alert getConfirmation(){
         return confirmation;
     }
+
+    /**
+     * Cette méthode trouve quel cours a été sélectionné par l'utilisateur dans le tableau
+     * @return Le Course sélectionné par l'utilisateur dans le tableau
+     */
+    public Course getSelectedCourse(){
+        return (Course) tableau.getSelectionModel().getSelectedItem();
+    }
+
 }
 
