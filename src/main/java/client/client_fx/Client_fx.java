@@ -4,8 +4,15 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Cette classe permet de démarrée l'application graphique
+ */
 public class Client_fx extends Application {
 
+    /**
+     * Redéfinie la méthode start pour lancé l'application
+     * @param primaryStage Représente le stage dans lequel l'interface graphique est situé
+     */
     @Override
     public void start(Stage primaryStage) {
         try{
@@ -21,6 +28,10 @@ public class Client_fx extends Application {
         }
     }
 
+    /**
+     * Cette méthode lance l'application
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
