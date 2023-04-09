@@ -7,6 +7,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 import server.models.Course;
@@ -134,10 +136,16 @@ public class Server {
      */
     public void handleLoadCourses(String arg) {
         try{
+            Pattern coursRegex = Pattern.compile("\"IFT[0-9]{4}\\t\\S+\\t(Hiver|Ete|Automne)\\n");
             BufferedReader reader = new BufferedReader(new FileReader("src/main/java/server/data/cours.txt"));
             String course;
             ArrayList<Course> courses = new ArrayList<>();
             while((course = reader.readLine()) != null){
+                Matcher matcher = coursRegex.matcher(course);
+                if (!matcher.find()){
+                    objectOutputStream.writeObject(null);
+                    throw new IOException();
+                }
                 String[] arrayCourse = course.split("\t");
                 if(arrayCourse[2].equals(arg)){
                     courses.add(new Course(arrayCourse[1],arrayCourse[0],arrayCourse[2]));
