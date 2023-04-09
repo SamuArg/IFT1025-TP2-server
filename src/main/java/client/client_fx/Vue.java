@@ -23,6 +23,12 @@ public class Vue extends HBox {
     private ComboBox<Object> sessionChoice;
     private Button charger;
     private Button envoyer;
+    private TextField prenomField;
+    private TextField nomField;
+    private TextField emailField;
+    private TextField matriculeField;
+    private Alert errors;
+    private Alert confirmation;
     public Vue(){
         VBox leftBox = new VBox();
         leftBox.setPrefSize(425,700);
@@ -83,23 +89,25 @@ public class Vue extends HBox {
         pane.setVgap(10);
         Label prenom = new Label("Prénom");
         pane.add(prenom,0,1);
-        TextField prenomField = new TextField();
+        prenomField = new TextField();
         pane.add(prenomField,1,1);
         Label nom = new Label("Nom");
         pane.add(nom,0,2);
-        TextField nomField = new TextField();
+        nomField = new TextField();
         pane.add(nomField,1,2);
         Label email = new Label("Email");
         pane.add(email,0,3);
-        TextField emailField = new TextField();
+        emailField = new TextField();
         pane.add(emailField,1,3);
         Label matricule = new Label("Matricule");
         pane.add(matricule,0,4);
-        TextField matriculeField = new TextField();
+        matriculeField = new TextField();
         pane.add(matriculeField,1,4);
         envoyer = new Button("Envoyer");
         pane.add(envoyer,1,5);
         rightBox.getChildren().add(pane);
+        errors = new Alert(Alert.AlertType.ERROR);
+        confirmation = new Alert(Alert.AlertType.CONFIRMATION);
     }
 
     public TableView<Object> getTableau(){
@@ -122,6 +130,24 @@ public class Vue extends HBox {
         for (int i = 0; i < courses.size(); i++){
             this.tableau.getItems().add(courses.get(i));
         }
+    }
+    public TextField getPrenomField(){
+        return prenomField;
+    }
+    public TextField getNomField(){
+        return nomField;
+    }
+    public TextField getMatriculeField(){
+        return matriculeField;
+    }
+    public TextField getEmailField(){
+        return emailField;
+    }
+    public Alert getErrors(){
+        return errors;
+    }
+    public Alert getConfirmation(){
+        return confirmation;
     }
 }
 

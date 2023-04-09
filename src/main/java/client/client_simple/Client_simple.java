@@ -196,14 +196,13 @@ public class Client_simple {
         return true;
     }
 
-    Pattern emailRegex = Pattern.compile("\\S+@\\S+\\.\\S+");
-
     /**
      * Cette méthode vérifie si le email rentré par l'utilisateur est dans le bon format
      * @param input Le String correspond au email rentré
      * @return Return true si le email est dans le bon format, false sinon
      */
     public boolean isEmail(String input){
+        Pattern emailRegex = Pattern.compile("\\S+@\\S+\\.\\S+");
         Matcher matcher = emailRegex.matcher(input);
         return matcher.find();
     }
