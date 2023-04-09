@@ -17,6 +17,9 @@ import server.models.Course;
 
 import java.util.ArrayList;
 
+/**
+ * Cette classe représente toute la partie graphique de l'application
+ */
 public class Vue extends HBox {
 
     private TableView<Object> tableau;
@@ -29,6 +32,10 @@ public class Vue extends HBox {
     private TextField matriculeField;
     private Alert errors;
     private Alert confirmation;
+
+    /**
+     * Constructeur initialisant toutes les composantes graphiques de l'application
+     */
     public Vue(){
         VBox leftBox = new VBox();
         leftBox.setPrefSize(425,700);
@@ -110,42 +117,87 @@ public class Vue extends HBox {
         confirmation = new Alert(Alert.AlertType.CONFIRMATION);
     }
 
+    /**
+     * Cette methode permet de trouver le tableau
+     * @return Retourne le TableView contenu dans la variable tableau
+     */
     public TableView<Object> getTableau(){
         return this.tableau;
     }
 
+    /**
+     * Cette méthode permet d'aller chercher la valeur de la session choisi par l'utilisateur
+     * @return La String de la session choisi par l'utilisateur
+     */
     public String getSessionChoice(){
         return (String) this.sessionChoice.getValue();
     }
 
+    /**
+     * Cette méthode permet de trouver la référence du Button charger
+     * @return Le button charger
+     */
     public Button getCharger(){
         return this.charger;
     }
 
+    /**
+     * Cette méthode permet de trouver la référence du Button envoyer
+     * @return Le button envoyer
+     */
     public Button getEnvoyer() {
         return this.envoyer;
     }
 
+    /**
+     * Cette méthode permet de remplir le TableView tableau avec les données voulues
+     * @param courses Le ArrayList contenant les Course qui vont remplir le tableau
+     */
     public void setCourses(ArrayList<Course> courses){
         for (int i = 0; i < courses.size(); i++){
             this.tableau.getItems().add(courses.get(i));
         }
     }
+
+    /**
+     * Cette méthode permet de trouver la référence du TextField prenomField
+     * @return Le TextField prenomField
+     */
     public TextField getPrenomField(){
         return prenomField;
     }
+    /**
+     * Cette méthode permet de trouver la référence du TextField nomField
+     * @return Le TextField nomField
+     */
     public TextField getNomField(){
         return nomField;
     }
+    /**
+     * Cette méthode permet de trouver la référence du TextField matriculeField
+     * @return Le TextField matriculeField
+     */
     public TextField getMatriculeField(){
         return matriculeField;
     }
+    /**
+     * Cette méthode permet de trouver la référence du TextField emailField
+     * @return Le TextField emailField
+     */
     public TextField getEmailField(){
         return emailField;
     }
+    /**
+     * Cette méthode permet de trouver la référence du Alert errors
+     * @return Le Alert errors
+     */
     public Alert getErrors(){
         return errors;
     }
+    /**
+     * Cette méthode permet de trouver la référence du Alert confirmation
+     * @return Le Alert confirmation
+     */
     public Alert getConfirmation(){
         return confirmation;
     }
