@@ -135,10 +135,7 @@ public class Client_simple {
             System.out.println("Veuillez saisir le code du cours: ");
             datas[4] = scan.next();
 
-            if (datas[3].length()!=8){
-                throw new IllegalArgumentException();
-            }
-            else if(!isNumber(datas[3])){
+            if (!isMatricule(datas[3])){
                 throw new IllegalArgumentException();
             }
 
@@ -183,17 +180,14 @@ public class Client_simple {
     }
 
     /**
-     * Cette méthode permet de vérifier si un input contient seulement des chiffres ou non
-     * @param input input en String à vérifier
-     * @return true si l'input contient que des chiffres, false sinon
+     * Cette méthode permet de vérifier si une String respecte le format d'un matricule
+     * @param input La String qu'il faut vérifier le format
+     * @return Retourne true si la String respecte le format, false sinon
      */
-    public boolean isNumber(String input){
-        for (int i=0; i<input.length();i++){
-            if (!Character.isDigit(input.charAt(i))){
-            return false;
-            }
-        }
-        return true;
+    public boolean isMatricule(String input){
+        Pattern matriculeRegex = Pattern.compile("[0-9]{8}");
+        Matcher matcher = matriculeRegex.matcher(input);
+        return matcher.find();
     }
 
     /**
