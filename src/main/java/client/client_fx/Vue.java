@@ -1,9 +1,7 @@
 package client.client_fx;
 
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
@@ -12,7 +10,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-import javafx.stage.Stage;
 import server.models.Course;
 
 import java.util.ArrayList;
@@ -114,7 +111,7 @@ public class Vue extends HBox {
         pane.add(envoyer,1,5);
         rightBox.getChildren().add(pane);
         errors = new Alert(Alert.AlertType.ERROR);
-        confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmation = new Alert(Alert.AlertType.INFORMATION);
     }
 
     /**
