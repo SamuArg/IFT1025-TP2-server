@@ -137,7 +137,7 @@ public class Server {
     public void handleLoadCourses(String arg) {
         try{
             Pattern coursRegex = Pattern.compile("IFT[0-9]{4}\\t\\S+\\t(Hiver|Ete|Automne)$");
-            BufferedReader reader = new BufferedReader(new FileReader("src/main/java/server/data/cours.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("data/cours.txt"));
             String course;
             ArrayList<Course> courses = new ArrayList<>();
             while((course = reader.readLine()) != null){
@@ -171,7 +171,7 @@ public class Server {
             String nom = input.getNom();
             String prenom = input.getPrenom();
             String email = input.getEmail();
-            FileWriter fw = new FileWriter("src/main/java/server/data/inscription.txt", true);
+            FileWriter fw = new FileWriter("data/inscription.txt", true);
             BufferedWriter writer = new BufferedWriter(fw);
             String newInscription = session + "\t" + code + "\t" + matricule + "\t" + nom + "\t" + prenom + "\t" + email + "\n";
             writer.append(newInscription);
