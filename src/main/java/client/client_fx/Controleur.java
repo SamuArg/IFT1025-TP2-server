@@ -15,7 +15,7 @@ public class Controleur {
     private String currentSession;
 
     /**
-     * Ce constructeur permet de lié les différentes classes ensemble et de définir l'action des boutons de l'interface graphique
+     * Ce constructeur permet de lier les différentes classes ensemble et de définir l'action des boutons de l'interface graphique
      * @param modele L'objet modele qui est utilisé pour faire le lien
      * @param vue L'objet vue qui est utilisé pour faire le lien
      */
@@ -100,7 +100,7 @@ public class Controleur {
     }
 
     /**
-     * Cette méthode définie les actions qui se passent lorsqu'on clique sur le bouton charger
+     * Cette méthode définie les actions qui se passent lorsqu'on clique sur le bouton charger.
      * Elle charge les cours de la session choisie dans le tableau
      */
     public void charger() {
@@ -110,18 +110,14 @@ public class Controleur {
             currentSession = session;
             try {
                 courses = this.modele.loadCourse(session);
-                if (courses == null){
-                    this.vue.getErrors().setContentText("Erreur serveur, veuillez réessayer plus tard");
-                    this.vue.getErrors().show();
-                    throw new IOException();
-                }
                 this.vue.setCourses(courses);
                 this.vue.getTableau().getItems().clear();
                 for (Course cours : courses) {
                     this.vue.getTableau().getItems().add(cours);
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                this.vue.getErrors().setContentText("Erreur serveur, veuillez réessayez plus tard.");
+                this.vue.getErrors().show();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }

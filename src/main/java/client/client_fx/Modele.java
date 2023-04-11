@@ -24,7 +24,7 @@ public class Modele {
      * Cette méthode permet de charger les cours d'une certaine session via le server
      * @param session La session pour laquelle on demande la liste de cours
      * @return Retourne une ArrayList des cours
-     * @throws IOException Si il y a une erreur lors de l'envoie ou de la réception de la requête vers le server
+     * @throws IOException S'il y a une erreur lors de l'envoie ou de la réception de la requête vers le server
      * @throws ClassNotFoundException Si la classe Course n'est pas trouvé lors de la lecture de l'input du server
      */
     public ArrayList<Course> loadCourse(String session) throws IOException, ClassNotFoundException {
@@ -36,7 +36,7 @@ public class Modele {
 
     /**
      * Cette méthode permet au client de se connecter au server
-     * @throws IOException Si il y a une erreur lors de la création de la connection entre le client et le serveur
+     * @throws IOException S'il y a une erreur lors de la création de la connection entre le client et le serveur
      */
     public void connect() throws IOException {
         clientSocket = new Socket("127.0.0.1",1337);
@@ -48,7 +48,7 @@ public class Modele {
      * Cette méthode permet d'envoyer un RegistrationForm du client vers le serveur pour s'inscrire à un cours
      * @param form Le RegistrationForm à envoyé au server
      * @return Retourne un message de disant si l'inscription est réussi ou non
-     * @throws IOException Si il y a une erreur entre le client et le server
+     * @throws IOException S'il y a une erreur entre le client et le server
      * @throws ClassNotFoundException Si la classe RegistrationForm n'est pas trouvé
      */
     public String sendForm(RegistrationForm form) throws IOException, ClassNotFoundException {

@@ -144,7 +144,7 @@ public class Server {
                 Matcher matcher = coursRegex.matcher(course);
                 if (!matcher.find()){
                     objectOutputStream.writeObject(null);
-                    throw new IOException();
+                    throw new IllegalArgumentException();
                 }
                 String[] arrayCourse = course.split("\t");
                 if(arrayCourse[2].equals(arg)){
@@ -152,6 +152,11 @@ public class Server {
                 }
             }
             objectOutputStream.writeObject(courses);
+        } catch (FileNotFoundException e) {
+            System.err.println(("Le fichier cours.txt n'a pas été trouvé."));
+        }
+        catch (IllegalArgumentException e){
+            System.err.println("Les données dans le fichier cours.txt ne sont pas dans le bon format.");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -179,9 +184,9 @@ public class Server {
             objectOutputStream.writeObject("Félicitations! Inscription réussie de " + prenom + " au cours " + code +".");
 
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        catch (FileNotFoundException e) {
+            System.err.println("Le fichier inscription.txt n'a pas été trouvé.");
+        } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
     }
