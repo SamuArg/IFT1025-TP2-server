@@ -30,7 +30,7 @@ public class Client_simple {
 
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Erreur serveur.");
         }
     }
 
@@ -84,7 +84,7 @@ public class Client_simple {
             }
             nextChoice();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Erreur serveur.");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -156,7 +156,7 @@ public class Client_simple {
             System.out.println("Veuillez fournir des informations exactes.");
             nextChoice();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Erreur serveur.");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -175,7 +175,7 @@ public class Client_simple {
             objectOutputStream.writeObject("INSCRIRE");
             objectOutputStream.writeObject(form);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Erreur serveur.");
         }
     }
 
