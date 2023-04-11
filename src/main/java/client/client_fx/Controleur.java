@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Controleur {
     private Modele modele;
     private Vue vue;
-    private String currentSession;
+
 
     /**
      * Ce constructeur permet de lier les différentes classes ensemble et de définir l'action des boutons de l'interface graphique
@@ -107,7 +107,6 @@ public class Controleur {
         String session = this.vue.getSessionChoice();
         if (session != null) {
             ArrayList<Course> courses;
-            currentSession = session;
             try {
                 courses = this.modele.loadCourse(session);
                 this.vue.setCourses(courses);
