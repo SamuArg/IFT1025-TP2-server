@@ -43,19 +43,39 @@ public class Controleur {
         String nom = this.vue.getNomField().getText();
         String email = this.vue.getEmailField().getText();
         String matricule = this.vue.getMatriculeField().getText();
-        if (course == null){
+        try {
+            if (course == null) {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
             errors.add("Veuillez choisir un cours.\n");
         }
-        if(!this.modele.isName(prenom)){
+        try{
+            if(!this.modele.isName(prenom)){
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
             errors.add("Veuillez fournir un prénom valide.\n");
         }
-        if(!this.modele.isName(nom)){
+        try{
+            if(!this.modele.isName(nom)){
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
             errors.add("Veuillez fournir un nom valide.\n");
         }
-        if(!this.modele.isMatricule(matricule)){
+        try{
+            if(!this.modele.isMatricule(matricule)){
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
             errors.add("Veuillez fournir un matricule valide.\n");
         }
-        if(!this.modele.isEmail(email)){
+        try{
+            if(!this.modele.isEmail(email)){
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
             errors.add("Veuillez fournir un email valide.\n");
         }
         if(errors.size()>0){
