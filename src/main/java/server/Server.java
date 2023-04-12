@@ -203,7 +203,7 @@ public class Server {
                 objectOutputStream = new ObjectOutputStream(client.getOutputStream());
                 listen();
                 disconnect();
-                System.out.println("Client déconnecté!"+thread);
+                System.out.println("Client déconnecté!");
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
