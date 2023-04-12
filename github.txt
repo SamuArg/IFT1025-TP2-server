@@ -1,1 +1,1 @@
-https://github.com/SamA1430/server
+https://github.com/SamuelArgeris/IFT1025-TP2-server
