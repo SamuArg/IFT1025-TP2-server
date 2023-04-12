@@ -191,10 +191,17 @@ public class Server {
     private class ClientHandler implements Runnable{
         private Socket client;
 
+        /**
+         * Ce constructeur permet de gérer un nouveau client apart des autres
+         * @param client Socket du client
+         */
         public ClientHandler(Socket client){
             this.client = client;
         }
 
+        /**
+         * Redéfinie la méthode run de l'interface runnable pour écouter la prochaine requête du client
+         */
         @Override
         public void run(){
             try{

@@ -2,7 +2,6 @@ package client.client_fx;
 
 import server.models.Course;
 import server.models.RegistrationForm;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
