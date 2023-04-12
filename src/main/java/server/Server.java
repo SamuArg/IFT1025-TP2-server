@@ -198,15 +198,12 @@ public class Server {
         @Override
         public void run(){
             try{
-                Thread thread = Thread.currentThread();
                 objectInputStream = new ObjectInputStream(client.getInputStream());
                 objectOutputStream = new ObjectOutputStream(client.getOutputStream());
                 listen();
                 disconnect();
                 System.out.println("Client déconnecté!");
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
+            } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
         }

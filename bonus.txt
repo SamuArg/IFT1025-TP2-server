@@ -1,0 +1,3 @@
+Le multithreading a été implémenté grâce à la classe ClientHandler qui implements Runnable et qui permet de séparer
+les clients en différents Thread. Dans la fonction run(), on met le code qui était initialement dans la fonction run()
+de la classe server pour que chaque client ait son propre Socket et puisse se déconnecter indépendamment des autres clients.
