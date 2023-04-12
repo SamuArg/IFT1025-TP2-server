@@ -40,6 +40,7 @@ public class Server {
      */
     public Server(int port) throws IOException {
         this.server = new ServerSocket(port, 1);
+        this.server.setReuseAddress(true);
         this.handlers = new ArrayList<EventHandler>();
         this.addEventHandler(this::handleEvents);
     }
@@ -66,11 +67,8 @@ public class Server {
             try {
                 client = server.accept();
                 System.out.println("Connecté au client: " + client);
-                objectInputStream = new ObjectInputStream(client.getInputStream());
-                objectOutputStream = new ObjectOutputStream(client.getOutputStream());
-                listen();
-                disconnect();
-                System.out.println("Client déconnecté!");
+                ClientHandler clientHandler = new ClientHandler(client);
+                new Thread(clientHandler).start();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -188,6 +186,29 @@ public class Server {
             System.err.println("Le fichier inscription.txt n'a pas été trouvé.");
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
+        }
+    }
+    private class ClientHandler implements Runnable{
+        private Socket client;
+
+        public ClientHandler(Socket client){
+            this.client = client;
+        }
+
+        @Override
+        public void run(){
+            try{
+                Thread thread = Thread.currentThread();
+                objectInputStream = new ObjectInputStream(client.getInputStream());
+                objectOutputStream = new ObjectOutputStream(client.getOutputStream());
+                listen();
+                disconnect();
+                System.out.println("Client déconnecté!"+thread);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
